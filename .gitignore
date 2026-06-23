@@ -1,0 +1,12 @@
+data/
+*.nc
+*.grb
+*.grb2
+*.log
+rsl.*
+wrfout_*
+wrfinput_*
+wrfbdy_*
+met_em*
+namelist.input
+namelist.wps
