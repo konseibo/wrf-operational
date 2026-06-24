@@ -246,6 +246,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         nco \
         cdo \
         eog \
+        tree \
         && rm -rf /var/lib/apt/lists/*
 
 # ── Copier nos bibliothèques compilées (NetCDF, HDF5, JasPer, libpng, zlib) ──
