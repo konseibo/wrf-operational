@@ -311,9 +311,13 @@ RUN /opt/miniforge3/bin/conda create -n wrf-py python=3.11 -y -c conda-forge && 
 ENV PATH="/opt/miniforge3/envs/wrf-py/bin:/opt/miniforge3/bin:$PATH"
 
 
+# ── Copier les scripts opérationnels ──
+COPY scripts/ /opt/wrf-scripts/
+RUN chmod +x /opt/wrf-scripts/*.sh
+
 # ── Variables d'environnement runtime ──
 ENV LD_LIBRARY_PATH="/opt/wrf-intel/libs/lib:/opt/intel/oneapi/compiler/lib:/opt/intel/oneapi/mpi/lib"
-ENV PATH="/opt/intel/oneapi/mpi/bin:/opt/wrf-intel/WRF/main:/opt/wrf-intel/WPS:$PATH"
+ENV PATH="/opt/intel/oneapi/mpi/bin:/opt/wrf-intel/WRF/main:/opt/wrf-intel/WPS:/opt/wrf-scripts:$PATH"
 ENV WRF_DIR=/opt/wrf-intel/WRF
 ENV WPS_DIR=/opt/wrf-intel/WPS
 

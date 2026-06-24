@@ -116,7 +116,7 @@ MAX_DOM=2
 DATA_ROOT="/data"
 WRF_INSTALL="/opt/wrf-intel/WRF"
 WPS_INSTALL="/opt/wrf-intel/WPS"
-SCRIPTS_DIR="/data/scripts"
+SCRIPTS_DIR="/opt/wrf-scripts"
 PYTHON="/opt/miniforge3/envs/wrf-py/bin/python"
 
 # ── Date et cycle ─────────────────────────────────────────────────────────────

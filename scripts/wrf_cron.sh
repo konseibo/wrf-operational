@@ -9,19 +9,18 @@
 #   crontab -e
 #
 #   # Simulation 00Z : lancement à 06h UTC (données GFS disponibles ~4h après)
-#   0 6 * * * bash /home/konseibo/ies/data/scripts/wrf_cron.sh 00 >> /home/konseibo/ies/data/logs/cron.log 2>&1
+#   0 6 * * * bash /home/konseibo/ies/scripts/wrf_cron.sh 00 >> /home/konseibo/ies/data/logs/cron.log 2>&1
 #   # Simulation 12Z : lancement à 18h UTC
-#   0 18 * * * bash /home/konseibo/ies/data/scripts/wrf_cron.sh 12 >> /home/konseibo/ies/data/logs/cron.log 2>&1
+#   0 18 * * * bash /home/konseibo/ies/scripts/wrf_cron.sh 12 >> /home/konseibo/ies/data/logs/cron.log 2>&1
 #
 # Lancement manuel :
-#   bash ~/ies/data/scripts/wrf_cron.sh 12
-#   bash ~/ies/data/scripts/wrf_cron.sh 00 20260623
+#   bash /home/konseibo/ies/scripts/wrf_cron.sh 12
+#   bash /home/konseibo/ies/scripts/wrf_cron.sh 00 20260623
 # =============================================================================
 
 CYCLE="${1:-12}"
 DATE="${2:-$(date -u +%Y%m%d)}"
 DATA_ROOT="/home/konseibo/ies/data"
-SCRIPTS_DIR="${DATA_ROOT}/scripts"
 
 echo "[$(date -u '+%Y-%m-%d %H:%M:%S UTC')] Lancement pipeline ${DATE} ${CYCLE}Z"
 
@@ -29,8 +28,8 @@ docker run --rm \
     -v "${DATA_ROOT}:/data" \
     --ulimit stack=-1 \
     --name "wrf-run-${DATE}-${CYCLE}Z" \
-    wrf-intel:4.7.1-slim \
-    bash /data/scripts/wrf_pipeline.sh "${DATE}" "${CYCLE}"
+    wrf-operational \
+    wrf_pipeline.sh "${DATE}" "${CYCLE}"
 
 EXIT_CODE=$?
 if [ $EXIT_CODE -eq 0 ]; then
