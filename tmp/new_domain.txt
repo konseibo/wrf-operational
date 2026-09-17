@@ -1,0 +1,6 @@
+d01 : 	ref : -174.50E, -20N		res : 12.5km	nXnY : 125
+d02 : 	ref : -174.50E, -20N		res : 2.50km	nXnY : 251
+d03 : 	ref : -175.15E, -21.25N		res : 0.50km	nXnY : 251 
+
+
+
